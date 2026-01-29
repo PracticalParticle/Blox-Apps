@@ -34,6 +34,10 @@ contract BloxchainWallet is GuardController, RuntimeRBAC, SecureOwnable {
     /// @notice Maximum time lock period: 90 days (7776000 seconds)
     uint256 public constant MAX_TIME_LOCK_PERIOD = 90 days;
 
+    /// @notice Maximum number of definition contracts allowed during initialization (prevents gas exhaustion and DoS)
+    /// @dev Limits external calls to untrusted contracts during initialization
+    uint256 public constant MAX_DEFINITION_CONTRACTS = 50;
+
     // ============ EVENTS ============
 
     /**
@@ -91,8 +95,15 @@ contract BloxchainWallet is GuardController, RuntimeRBAC, SecureOwnable {
         // Initialize base (validates time lock period and initializes parent contracts)
         _initializeBase(initialOwner, broadcaster, recovery, timeLockPeriodSec, eventForwarder);
         
+        // Validate array length to prevent gas exhaustion and DoS attacks
+        // Each definition contract makes 2 external calls, so we limit the array size
+        if (definitionContracts.length > MAX_DEFINITION_CONTRACTS) {
+            revert SharedValidation.BatchSizeExceeded(definitionContracts.length, MAX_DEFINITION_CONTRACTS);
+        }
+        
         // Load custom definitions from each definition contract
         // All validation is handled internally by _loadDefinitions with allowProtectedSchemas=false
+        // Note: Definition contracts should be trusted or audited, as they make external calls
         for (uint256 i = 0; i < definitionContracts.length; i++) {
             SharedValidation.validateNotZeroAddress(address(definitionContracts[i]));
             
