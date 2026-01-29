@@ -15,7 +15,7 @@ Thank you for your interest in contributing to Bloxchain Wallet! This document p
 
 ## Code of Conduct
 
-This project follows professional standards of conduct. By participating, you agree to uphold respectful and professional behavior. Please report unacceptable behavior to support@particlecs.com.
+This project follows professional standards of conduct. By participating, you agree to uphold respectful and professional behavior. Please report unacceptable behavior to [support@particlecs.com](mailto:support@particlecs.com).
 
 ## Getting Started
 
@@ -25,7 +25,8 @@ Before contributing, ensure you have:
 
 - **Node.js** (v18 or higher)
 - **npm** (v8 or higher)
-- **Hardhat** (v3.15 or higher)
+- **Hardhat** (v3.1.5 or higher)
+- **Foundry** (latest version) - Required for Foundry-based testing and compilation
 - **Git** (latest version)
 - **Solidity** knowledge (0.8.33)
 - Familiarity with **Bloxchain Protocol**
@@ -51,7 +52,7 @@ npm test
 
 ### Project Structure
 
-```
+```text
 Bloxchain-Wallet/
 ├── contracts/           # Smart contracts
 │   └── BloxchainWallet.sol
@@ -192,4 +193,4 @@ By submitting a Pull Request or contributing code to this repository, you acknow
 
 ---
 
-For questions about contributing or licensing, contact: **legal@particlecs.com**
+For questions about contributing or licensing, contact: **[legal@particlecs.com](mailto:legal@particlecs.com)**
