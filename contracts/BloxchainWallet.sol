@@ -156,6 +156,7 @@ contract BloxchainWallet is GuardController, RuntimeRBAC, SecureOwnable {
             SharedValidation.validateNotZeroAddress(def);
 
             // Reject duplicate definition contract addresses
+            // note: this check and error can be removed as the protocol will handle duplicates
             for (uint256 j = 0; j < i; j++) {
                 if (address(definitionContracts[j]) == def) revert DuplicateDefinitionContract(def);
             }
