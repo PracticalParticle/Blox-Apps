@@ -14,7 +14,7 @@ The **official on-chain smart programable account** for the Bloxchain Wallet app
 
 ## What is Bloxchain Wallet?
 
-Bloxchain Wallet is the **core on-chain infrastructure** for the Bloxchain Wallet application. It is powerded by the Bloxchain Protocol and provides:
+Bloxchain Wallet is the **core on-chain infrastructure** for the Bloxchain Wallet application. It is powered by the Bloxchain Protocol and provides:
 
 - **GuardController** – Execution workflows, time-locked transactions, and controlled external contract interactions
 - **RuntimeRBAC** – Runtime role creation and management with function-level permissions
