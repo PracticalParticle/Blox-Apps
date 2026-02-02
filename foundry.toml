@@ -24,8 +24,9 @@ runs = 256
 depth = 15
 fail_on_revert = false
 
-# Remappings for OpenZeppelin dependencies
+# Remappings for dependencies
 remappings = [
+    "@bloxchain/contracts/=node_modules/@bloxchain/contracts/",
     "@openzeppelin/=node_modules/@openzeppelin/",
     "forge-std/=lib/forge-std/src/",
 ]

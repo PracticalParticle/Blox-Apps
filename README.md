@@ -153,7 +153,7 @@ cd Bloxchain-Wallet
 npm install
 ```
 
-The project depends on `@bloxchain/contracts` and `@bloxchain/sdk`; they are installed with `npm install`.
+The project depends on [@bloxchain/contracts](https://www.npmjs.com/package/@bloxchain/contracts) and [@bloxchain/sdk](https://www.npmjs.com/package/@bloxchain/sdk); they are installed with `npm install`.
 
 ### Compile
 
@@ -188,7 +188,7 @@ npm run test:foundry:coverage
 
 ## Usage with the Bloxchain Protocol SDK
 
-Bloxchain Wallet is a ControlBlox-style contract. Use the same SDK clients as for other Bloxchain controllers: **SecureOwnable**, **RuntimeRBAC**, and **Definitions** (and GuardController-related helpers as exposed by the SDK).
+Bloxchain Wallet is a AccountBlox-style contract. Use the same SDK clients as for other Bloxchain controllers: **SecureOwnable**, **RuntimeRBAC**, and **Definitions** (and GuardController-related helpers as exposed by the SDK).
 
 ### Basic setup
 
@@ -336,7 +336,7 @@ We welcome contributions. See [CONTRIBUTING.md](CONTRIBUTING.md) for:
 
 ## Acknowledgments
 
-- **[Bloxchain Protocol](https://github.com/PracticalParticle/Bloxchain-Protocol)** – Core security framework and ControlBlox template  
+- **[Bloxchain Protocol](https://github.com/PracticalParticle/Bloxchain-Protocol)** – Core security framework and AccountBlox template  
 - **[Particle Crypto Security](https://particlecs.com/)** – Bloxchain Wallet implementation  
 - **OpenZeppelin** – Upgradeable and security patterns  
 - **Foundry / Hardhat** – Compilation and testing  

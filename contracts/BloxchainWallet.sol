@@ -4,13 +4,13 @@ pragma solidity 0.8.33;
 
 // ============ IMPORTS ============
 
-// Import core security components from the Bloxchain Protocol contracts package
-import "@bloxchain/contracts/contracts/core/execution/GuardController.sol";
-import "@bloxchain/contracts/contracts/core/access/RuntimeRBAC.sol";
-import "@bloxchain/contracts/contracts/core/security/SecureOwnable.sol";
-import "@bloxchain/contracts/contracts/core/base/BaseStateMachine.sol";
-import "@bloxchain/contracts/contracts/utils/SharedValidation.sol";
-import "@bloxchain/contracts/contracts/interfaces/IDefinition.sol";
+// Import core components from @bloxchain/contracts package
+import "@bloxchain/contracts/core/execution/GuardController.sol";
+import "@bloxchain/contracts/core/access/RuntimeRBAC.sol";
+import "@bloxchain/contracts/core/security/SecureOwnable.sol";
+import "@bloxchain/contracts/core/base/BaseStateMachine.sol";
+import "@bloxchain/contracts/utils/SharedValidation.sol";
+import "@bloxchain/contracts/interfaces/IDefinition.sol";
 
 // ============ CONTRACT DOCUMENTATION ============
 
@@ -49,9 +49,6 @@ contract BloxchainWallet is GuardController, RuntimeRBAC, SecureOwnable {
     uint256 public constant MAX_PERMISSIONS_PER_DEFINITION = 200;
 
     // ============ CUSTOM ERRORS ============
-
-    /// @dev Thrown when the same definition contract address appears more than once in the initialization array
-    error DuplicateDefinitionContract(address definition);
 
     /// @dev Thrown when an address does not implement the IDefinition interface (ERC165)
     error DefinitionNotIDefinition(address definition);
@@ -153,19 +150,12 @@ contract BloxchainWallet is GuardController, RuntimeRBAC, SecureOwnable {
         // Load custom definitions from each definition contract (no duplicates, bounded sizes, allowProtectedSchemas=false)
         for (uint256 i = 0; i < definitionContracts.length; i++) {
             address def = address(definitionContracts[i]);
-            SharedValidation.validateNotZeroAddress(def);
+            // SharedValidation.validateNotZeroAddress(def);
 
-            // Reject duplicate definition contract addresses
-            // note: this check and error can be removed as the protocol will handle duplicates
-            for (uint256 j = 0; j < i; j++) {
-                if (address(definitionContracts[j]) == def) revert DuplicateDefinitionContract(def);
+            // Require ERC165 IDefinition support for clearer errors and safety
+            if (!definitionContracts[i].supportsInterface(type(IDefinition).interfaceId)) {
+                revert DefinitionNotIDefinition(def);
             }
-
-            // This will be applicable in the next bloxchain update
-            // // Require ERC165 IDefinition support for clearer errors and safety
-            // if (!definitionContracts[i].supportsInterface(type(IDefinition).interfaceId)) {
-            //     revert DefinitionNotIDefinition(def);
-            // }
 
             EngineBlox.FunctionSchema[] memory schemas = definitionContracts[i].getFunctionSchemas();
             IDefinition.RolePermission memory permissions = definitionContracts[i].getRolePermissions();
@@ -181,16 +171,9 @@ contract BloxchainWallet is GuardController, RuntimeRBAC, SecureOwnable {
             _loadDefinitions(
                 schemas,
                 permissions.roleHashes,
-                permissions.functionPermissions
+                permissions.functionPermissions,
+                false // Custom definitions must not be protected
             );
-              
-            // This will be applicable in the next bloxchain update   
-            // _loadDefinitions(
-            //     schemas,
-            //     permissions.roleHashes,
-            //     permissions.functionPermissions,
-            //     false // Custom definitions must not be protected
-            // );
         }
     }
 
