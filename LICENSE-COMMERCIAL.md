@@ -16,6 +16,12 @@ offered under a **dual license**:
   - Internal or external SaaS use without AGPL obligations
   - Service-level commitments, support, or custom terms
 
+**Network use (including unmodified):** Making Bloxchain Wallet available for use
+over a network (e.g. hosted or SaaS, or on-chain for third parties) requires either
+offering Corresponding Source to users under AGPL-3.0 or holding a commercial
+license. A commercial license is required for any closed-source or proprietary
+network/SaaS use.
+
 ## 2. Intended Rights Under the Commercial License
 
 Subject to a separately signed commercial agreement, a commercial license is

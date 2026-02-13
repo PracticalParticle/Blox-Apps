@@ -27,6 +27,18 @@ If you have entered into a separate commercial license agreement for Bloxchain W
 the terms of that commercial agreement **supersede** the AGPL-3.0 terms for your
 permitted uses under that agreement.
 
+**Network use and SaaS – clarification**
+Making the Program (including unmodified versions) available for use by third parties
+over a computer network (e.g. as a hosted or SaaS offering, or by deploying on-chain
+for use by others) is use that, under Particle Crypto Security's interpretation of
+AGPL-3.0 and this dual license, requires you either to provide the Corresponding
+Source to those users in accordance with AGPL-3.0 (e.g. by offering access to the
+source; for unmodified versions, this may be satisfied by directing users to the
+official repository where the source is available), or to obtain a commercial
+license from Particle Crypto Security. If you wish to operate a closed-source or
+proprietary SaaS or hosted service based on Bloxchain Wallet without such disclosure,
+you must obtain a commercial license. Contact: legal@particlecs.com.
+
 ----------------------------------------------------------------------
 
                     GNU AFFERO GENERAL PUBLIC LICENSE
