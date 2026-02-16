@@ -23,7 +23,7 @@
 
 ## Official-Blox: Bloxchain Wallet
 
-The **Bloxchain Wallet** is the first official application in the hub: the official on-chain smart programmable account for the Bloxchain Wallet app.
+The **Bloxchain Wallet** is the first official application in the hub: the official on-chain smart programmable account for the Bloxchain Wallet app. 
 
 Bloxchain Wallet is the **core on-chain infrastructure** for the Bloxchain Wallet application. It is powered by the Bloxchain Protocol and provides:
 
